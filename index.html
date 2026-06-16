@@ -391,14 +391,51 @@
         .css-wax-seal::before {
             content: ''; position: absolute; width: 65px; height: 65px; border-radius: 50%;
             border: 2px solid #3c1e15;
+            box-shadow: inset 3px 3px 6px rgba(0,0,0,0.7), inset -2px -2px 4px rgba(255,150,100,0.2), 2px 2px 3px rgba(255,150,100,0.15);
+            background: radial-gradient(circle at 30% 30%, transparent 0%, rgba(0,0,0,0.2) 100%);
+        }
+        .css-wax-seal::after {
+            content: '♥'; position: absolute; font-size: 32px; color: #3c1e15;
+            text-shadow: 1px 1px 1px rgba(255,150,100,0.2), -1px -1px 3px rgba(0,0,0,0.9); transform: translateY(-1px);
+        }
+        
+        /* CLICK HERE HINT */
+        .click-hint {
+            position: absolute; left: -70px; top: 50px;
+            pointer-events: none; z-index: 50; display: flex; flex-direction: column; align-items: center;
+            animation: bounceHint 2s infinite ease-in-out;
+        }
+        @keyframes bounceHint {
+            0%, 100% { transform: translate(-5px, 5px); }
+            50% { transform: translate(0, 0); }
+        }
+        .hint-arrow { width: 35px; height: 35px; margin-left: 15px; margin-bottom: -5px; }
+        .hint-text { font-family: 'Dancing Script', cursive; color: #ff2a2a; font-size: 20px; font-weight: 700; white-space: nowrap; }
+
+        /* Fade out text and seal when opened */
+        .env-wrapper.is-open .flap-content,
+        .env-wrapper.is-open .css-wax-seal,
+        .env-wrapper.is-open .click-hint {
+            opacity: 0; pointer-events: none;
+            transition: transform 0.3s ease, opacity 0.3s ease 0s;
+        }
+
+        /* ===== TAPED DRIED FLOWER ===== */
+        .taped-flower {
+            position: absolute; bottom: 20px; right: 20px; width: 100px; height: 120px; z-index: 5; pointer-events: none;
+        }
+        .flower-img {
+            width: 100%; height: 100%; object-fit: contain; transform: rotate(-12deg); opacity: 0.85;
+            filter: invert(1) hue-rotate(180deg) brightness(1.2) contrast(1.2) sepia(0.3); mix-blend-mode: multiply;
+        }
         .tape {
-            position: absolute; bottom: 46px; left: 58px; width: 54px; height: 26px; background: rgba(255,255,255,0.25);
+            position: absolute; bottom: 30px; left: 40px; width: 40px; height: 20px; background: rgba(255,255,255,0.25);
             backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
             transform: rotate(-8deg); box-shadow: 0 2px 5px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.15);
             display: flex; align-items: center; justify-content: center;
         }
         .tape::after {
-            content: '♥'; font-family: 'Dancing Script', cursive; font-size: 18px; color: #2A1306; opacity: 0.85;
+            content: '♥'; font-family: 'Dancing Script', cursive; font-size: 14px; color: #2A1306; opacity: 0.85;
         }
 
         /* ===== OPEN HINT ===== */
