@@ -230,7 +230,7 @@
         /* Base Envelope */
         .envelope {
             position: relative;
-            width: 1250px; height: 700px;
+            width: 900px; height: 504px; max-width: 95vw;
             border-radius: 4px 6px 3px 5px;
             background: #b39a82;
             box-shadow: 
@@ -267,9 +267,9 @@
             position: absolute;
             bottom: 5px; left: 15px; right: 15px; top: 10px;
             background: #fdf6e9; 
-            background-image: repeating-linear-gradient(transparent, transparent 63px, rgba(160, 130, 100, 0.1) 63px, rgba(160, 130, 100, 0.1) 64px);
+            background-image: repeating-linear-gradient(transparent, transparent 35px, rgba(160, 130, 100, 0.1) 35px, rgba(160, 130, 100, 0.1) 36px);
             border-radius: 2px;
-            padding: 85px 120px;
+            padding: 50px 70px;
             box-shadow: inset 0 0 20px rgba(160, 120, 80, 0.05);
             z-index: 1; /* Below the flaps */
             overflow-y: auto; overflow-x: hidden;
@@ -310,16 +310,16 @@
             opacity: 1; pointer-events: auto; transition-delay: 1.2s; /* Fade in after slide */
         }
         .letter-content {
-            color: #2a1810; font-size: 38px; line-height: 64px; font-weight: 600; position: relative; z-index: 2;
+            color: #2a1810; font-size: 20px; line-height: 36px; font-weight: 600; position: relative; z-index: 2;
         }
         .lt-dear {
-            font-family: 'Dancing Script', cursive; font-size: 56px; font-weight: 700; margin-bottom: 25px;
+            font-family: 'Dancing Script', cursive; font-size: 32px; font-weight: 700; margin-bottom: 15px;
         }
         .lt-body {
-            margin-bottom: 35px; text-align: justify; text-indent: 50px;
+            margin-bottom: 25px; text-align: justify; text-indent: 40px;
         }
         .lt-sign {
-            font-family: 'Dancing Script', cursive; font-size: 48px; text-align: right; margin-right: 20px; font-weight: 700;
+            font-family: 'Dancing Script', cursive; font-size: 28px; text-align: right; margin-right: 20px; font-weight: 700;
         }
 
         /* ===== ENVELOPE FLAPS ===== */
@@ -367,20 +367,20 @@
             transition: opacity 0.3s ease 0.8s; /* Closing delay */
         }
         .greeting {
-            font-family: 'Dancing Script', cursive; font-size: 76px; color: #3A2316; margin-bottom: 12px;
+            font-family: 'Dancing Script', cursive; font-size: 48px; color: #3A2316; margin-bottom: 8px;
             text-shadow: 0 1px 2px rgba(255,255,255,0.15); 
         }
         .greeting .sh {
-            font-size: 30px; color: #8A3A1A; margin-left: 6px; display: inline-block; vertical-align: super;
+            font-size: 20px; color: #8A3A1A; margin-left: 6px; display: inline-block; vertical-align: super;
         }
         .env-msg {
-            font-family: 'Cormorant Garamond', Georgia, serif; font-size: 28px; color: #3A2316; font-style: italic; line-height: 1.6;
+            font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; color: #3A2316; font-style: italic; line-height: 1.6;
         }
 
         /* ===== WAX SEAL ===== */
         .css-wax-seal {
             position: absolute; left: 50%; top: 60%; transform: translate(-50%, -50%);
-            width: 110px; height: 110px; z-index: 6;
+            width: 85px; height: 85px; z-index: 6;
             background: radial-gradient(circle at 35% 25%, #a45a42 0%, #8a4a33 45%, #592e1e 100%);
             border-radius: 48% 52% 46% 54% / 51% 47% 53% 49%;
             box-shadow: 6px 10px 20px rgba(0,0,0,0.6), inset 3px 6px 10px rgba(255,200,180,0.25), inset -5px -8px 15px rgba(0,0,0,0.8); 
@@ -389,44 +389,8 @@
         }
         .envelope:hover .css-wax-seal { transform: translate(-50%, -50%) scale(1.05); }
         .css-wax-seal::before {
-            content: ''; position: absolute; width: 80px; height: 80px; border-radius: 50%;
+            content: ''; position: absolute; width: 65px; height: 65px; border-radius: 50%;
             border: 2px solid #3c1e15;
-            box-shadow: inset 3px 3px 6px rgba(0,0,0,0.7), inset -2px -2px 4px rgba(255,150,100,0.2), 2px 2px 3px rgba(255,150,100,0.15);
-            background: radial-gradient(circle at 30% 30%, transparent 0%, rgba(0,0,0,0.2) 100%);
-        }
-        .css-wax-seal::after {
-            content: '♥'; position: absolute; font-size: 42px; color: #3c1e15;
-            text-shadow: 1px 1px 1px rgba(255,150,100,0.2), -1px -1px 3px rgba(0,0,0,0.9); transform: translateY(-1px);
-        }
-        
-        /* CLICK HERE HINT */
-        .click-hint {
-            position: absolute; left: -80px; top: 60px;
-            pointer-events: none; z-index: 50; display: flex; flex-direction: column; align-items: center;
-            animation: bounceHint 2s infinite ease-in-out;
-        }
-        @keyframes bounceHint {
-            0%, 100% { transform: translate(-5px, 5px); }
-            50% { transform: translate(0, 0); }
-        }
-        .hint-arrow { width: 45px; height: 45px; margin-left: 20px; margin-bottom: -5px; }
-        .hint-text { font-family: 'Dancing Script', cursive; color: #ff2a2a; font-size: 28px; font-weight: 700; white-space: nowrap; }
-
-        /* Fade out text and seal when opened */
-        .env-wrapper.is-open .flap-content,
-        .env-wrapper.is-open .css-wax-seal {
-            opacity: 0; pointer-events: none;
-            transition: transform 0.3s ease, opacity 0.3s ease 0s;
-        }
-
-        /* ===== TAPED DRIED FLOWER ===== */
-        .taped-flower {
-            position: absolute; bottom: 30px; right: 40px; width: 150px; height: 185px; z-index: 5; pointer-events: none;
-        }
-        .flower-img {
-            width: 100%; height: 100%; object-fit: contain; transform: rotate(-12deg); opacity: 0.85;
-            filter: invert(1) hue-rotate(180deg) brightness(1.2) contrast(1.2) sepia(0.3); mix-blend-mode: multiply;
-        }
         .tape {
             position: absolute; bottom: 46px; left: 58px; width: 54px; height: 26px; background: rgba(255,255,255,0.25);
             backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
@@ -492,19 +456,19 @@
             }
             .custom-photo:hover { transform: rotate(0deg) scale(1.02); }
         }
-        @media(max-width: 1300px) {
+        @media(max-width: 1000px) {
             .header { padding-top: 40px; }
-            .main-title { font-size: 48px; }
-            .envelope { width: 94vw; max-width: 1250px; height: auto; aspect-ratio: 1250/700; }
+            .main-title { font-size: 42px; }
+            .envelope { width: 94vw; max-width: 900px; height: auto; aspect-ratio: 1250/700; }
             .flap-content { top: 16%; }
-            .greeting { font-size: 56px; }
-            .env-msg { font-size: 22px; }
-            .env-wrapper.is-open { transform: translateY(80px); }
-            .env-wrapper.is-open .letter-paper { transform: translateY(-120px) scale(1.02); }
-            .letter-paper { padding: 60px 40px; background-image: repeating-linear-gradient(transparent, transparent 47px, rgba(160, 130, 100, 0.1) 47px, rgba(160, 130, 100, 0.1) 48px); }
-            .letter-content { font-size: 28px; line-height: 48px; }
-            .lt-dear { font-size: 42px; }
-            .lt-sign { font-size: 38px; }
+            .greeting { font-size: 40px; }
+            .env-msg { font-size: 16px; }
+            .env-wrapper.is-open { transform: translateY(60px); }
+            .env-wrapper.is-open .letter-paper { transform: translateY(-80px) scale(1.02); }
+            .letter-paper { padding: 40px 30px; background-image: repeating-linear-gradient(transparent, transparent 31px, rgba(160, 130, 100, 0.1) 31px, rgba(160, 130, 100, 0.1) 32px); }
+            .letter-content { font-size: 18px; line-height: 32px; }
+            .lt-dear { font-size: 28px; }
+            .lt-sign { font-size: 24px; }
             
             .cols { grid-template-columns: repeat(2, 1fr); gap: 30px; }
             .col:nth-child(2n)::after { display: none; }
@@ -517,18 +481,18 @@
             
             .envelope { width: 96vw; }
             .flap-content { top: 15%; padding: 0 15px; }
-            .greeting { font-size: 42px; }
-            .css-wax-seal { width: 75px; height: 75px; }
-            .css-wax-seal::before { width: 55px; height: 55px; }
-            .css-wax-seal::after { font-size: 28px; }
-            .taped-flower { width: 90px; height: 110px; right: 15px; bottom: 15px; }
+            .greeting { font-size: 32px; }
+            .css-wax-seal { width: 60px; height: 60px; }
+            .css-wax-seal::before { width: 45px; height: 45px; }
+            .css-wax-seal::after { font-size: 22px; }
+            .taped-flower { width: 70px; height: 90px; right: 15px; bottom: 15px; }
 
-            .letter-paper { padding: 45px 25px; background-image: repeating-linear-gradient(transparent, transparent 39px, rgba(160, 130, 100, 0.1) 39px, rgba(160, 130, 100, 0.1) 40px); }
-            .env-wrapper.is-open { transform: translateY(60px); }
-            .env-wrapper.is-open .letter-paper { transform: translateY(-80px) scale(1.02); }
-            .letter-content { font-size: 24px; line-height: 40px; }
-            .lt-dear { font-size: 36px; }
-            .lt-sign { font-size: 32px; }
+            .letter-paper { padding: 30px 20px; background-image: repeating-linear-gradient(transparent, transparent 27px, rgba(160, 130, 100, 0.1) 27px, rgba(160, 130, 100, 0.1) 28px); }
+            .env-wrapper.is-open { transform: translateY(50px); }
+            .env-wrapper.is-open .letter-paper { transform: translateY(-50px) scale(1.02); }
+            .letter-content { font-size: 16px; line-height: 28px; }
+            .lt-dear { font-size: 24px; }
+            .lt-sign { font-size: 20px; }
 
             .page { padding-bottom: 120px; }
 
